@@ -1,5 +1,5 @@
 {
-    "name": "smaillTony/menu-permit-auto",
+    "name": "smailltony/menu-permit-auto",
     "alias": "",
     "description": "dcat admin 修改菜单时，自动处理权限相关逻辑",
     "type": "library",
