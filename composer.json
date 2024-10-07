@@ -1,0 +1,32 @@
+{
+    "name": "tony/menu-permit-auto",
+    "alias": "",
+    "description": "dcat admin 修改菜单时，自动处理权限相关逻辑",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension"],
+    "homepage": "https://github.com/tony/menu-permit-auto",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tony",
+            "email": "865460609@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "dcat/laravel-admin": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dcat\\Admin\\MenuPermitAuto\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "Dcat\\Admin\\MenuPermitAuto\\MenuPermitAutoServiceProvider",
+        "laravel": {
+            "providers": [
+                "Dcat\\Admin\\MenuPermitAuto\\MenuPermitAutoServiceProvider"
+            ]
+        }
+    }
+}
