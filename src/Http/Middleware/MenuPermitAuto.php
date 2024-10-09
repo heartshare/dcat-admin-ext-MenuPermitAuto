@@ -45,7 +45,7 @@ class MenuPermitAuto
                     $permission['slug']       = (string)Str::uuid();
                     $permission['http_path']  = $this->getHttpPath($latestMenu['uri']);
                     $permission['order']      = $latestMenu['order'];
-                    $permission['parent_id']  = $latestMenu['parent_id'];
+                    $permission['parent_id']  = $request->post('permissions') ? $request->post('permissions') : $latestMenu['parent_id'];
                     $permission['created_at'] = $latestMenu['created_at'];
                     $permission['updated_at'] = $latestMenu['updated_at'];
                     DB::transaction(function () use ($permission, $latestMenuId) {
