@@ -5,4 +5,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('menu-permit-auto', Controllers\MenuPermitAutoController::class.'@index');
 
-Route::get('sync-menu-permit', Controllers\MenuPermitAutoController::class.'@syncMenuPeimit');
+Route::get('auth/sync-menu-permit', Controllers\MenuPermitAutoController::class.'@syncMenuPeimit');
