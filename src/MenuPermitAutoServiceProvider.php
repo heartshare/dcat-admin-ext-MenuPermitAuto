@@ -44,17 +44,22 @@ class MenuPermitAutoServiceProvider extends ServiceProvider
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error('网络响应失败');
-                                    Dcat.error('服务器出现未知错误');
+                                    Dcat.error('服务器出现未知错误1');
                                 }
                                 return response.json();
                             })
                             .then(data => {
-                                console.log('成功:', data);
-                                Dcat.success(data);
+			        console.log(data);
+			        if (data == 200) {
+			      	    Dcat.success("菜单权限同步成功!");
+			            setTimeout(function () {Dcat.reload();}, 1000);
+				} else {
+			      	     Dcat.error('服务器出现未知错误2');
+				}
                             })
                             .catch((error) => {
-                                console.error('错误:', error);
-                                 Dcat.error('服务器出现未知错误');
+                                 console.error('错误:', error);
+                                 Dcat.error('服务器出现未知错误3');
                             });
                     });
                     newDiv.appendChild(button);
