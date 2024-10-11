@@ -40,7 +40,7 @@ class MenuPermitAutoServiceProvider extends ServiceProvider
                     button.textContent = '菜单权限同步';
                     button.classList.add('btn', 'btn-outline-primary', 'btn-sm');
                     button.addEventListener('click', () => {
-                        fetch('sync-menu-permit')
+                        fetch('auth/sync-menu-permit')
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error('网络响应失败');
