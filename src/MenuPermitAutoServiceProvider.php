@@ -49,7 +49,6 @@ class MenuPermitAutoServiceProvider extends ServiceProvider
                                 return response.json();
                             })
                             .then(data => {
-			        console.log(data);
 			        if (data == 200) {
 			      	    Dcat.success("菜单权限同步成功!");
 			            setTimeout(function () {Dcat.reload();}, 1000);
