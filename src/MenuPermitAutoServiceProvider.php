@@ -15,9 +15,22 @@ class MenuPermitAutoServiceProvider extends ServiceProvider
 		'css/index.css',
 	];*/
 
-public function boot()
-    {
-        Admin::navbar(function (Navbar $navbar) {
+    protected $middleware = [
+        'middle' => [ // 注册中间件
+            MenuPermitAuto::class,
+        ],
+    ];
+
+	/*public function register()
+	{
+		//
+	}*/
+
+	public function init()
+	{
+		parent::init();
+
+		 Admin::navbar(function (Navbar $navbar) {
             if (request()->is('admin/auth/menu')) {
                 Admin::script(<<<SCRIPT
                     const cardHeader = document.querySelector('.card-header.pb-1.with-border');
@@ -33,26 +46,8 @@ public function boot()
                 SCRIPT);
             }
         });
-    }
 
-    protected $middleware = [
-        'middle' => [ // 注册中间件
-            MenuPermitAuto::class,
-        ],
-    ];
-
-	/*public function register()
-	{
-		//
 	}
-
-	public function init()
-	{
-		parent::init();
-
-		//
-
-	}*/
 
 	public function settingForm()
 	{
