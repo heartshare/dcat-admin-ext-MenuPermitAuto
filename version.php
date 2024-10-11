@@ -23,4 +23,8 @@ return [
         'Initialize extension.',
         '修复包的引入',
     ],
+     '1.0.5' => [
+        'Initialize extension.',
+        '添加按钮控制器',
+    ],
 ];
