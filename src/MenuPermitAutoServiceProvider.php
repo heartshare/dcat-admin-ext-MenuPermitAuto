@@ -37,12 +37,27 @@ class MenuPermitAutoServiceProvider extends ServiceProvider
                     const cardHeader = document.querySelector('.card-header.pb-1.with-border');
                     const newDiv = document.createElement('div');
                     const button = document.createElement('button');
-                    const link = document.createElement('a');
                     button.textContent = '菜单权限同步';
                     button.classList.add('btn', 'btn-outline-primary', 'btn-sm');
-                    link.appendChild(button);
-                    link.href = '/admin/auth/permissions';
-                    newDiv.appendChild(link);
+                    button.addEventListener('click', () => {
+                        fetch('/sync-menu-permit')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('网络响应失败');
+                                    Dcat.error('服务器出现未知错误');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('成功:', data);
+                                Dcat.success(data);
+                            })
+                            .catch((error) => {
+                                console.error('错误:', error);
+                                 Dcat.error('服务器出现未知错误');
+                            });
+                    });
+                    newDiv.appendChild(button);
                     cardHeader.appendChild(newDiv);
                 SCRIPT);
             }
