@@ -28,10 +28,12 @@ class MenuPermitAutoController extends Controller
 
     public function syncMenuPeimit() {
         $this->backupPath = storage_path('menu-backup.bak');
-        $this->backupMenu();
-        $this->fillMenu();
-        
-        return 200;
+        if ($this->backupMenu() == 200) {
+            if ($this->fillMenu() == 200) {
+                return 200;
+            }
+        }
+        return 400;
     }
 
     /**
@@ -40,8 +42,7 @@ class MenuPermitAutoController extends Controller
     private function backupMenu()
     {
         $res = file_put_contents($this->backupPath, serialize(optional(Menu::get())->toArray()));
-
-        echo $res ? 'Backup succeeded' : 'Backup failed';
+        return $res ? 200 : 400;
     }
     
     /**
@@ -73,8 +74,7 @@ class MenuPermitAutoController extends Controller
                 ]);
             }
         }
-
-        echo 'Filled successfully';
+        return 200;
     }
 
     private function generatePermissions($menu)
