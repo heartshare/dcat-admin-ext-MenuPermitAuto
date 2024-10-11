@@ -16,7 +16,7 @@ class MenuPermitAutoController extends Controller
             ->body(Admin::view('tony.menu-permit-auto::index'));
     }
 
-    public function syncMenuPeimit(Request $request) {
+    public function syncMenuPeimit() {
         return 200;
     }
 }
